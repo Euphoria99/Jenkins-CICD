@@ -1,0 +1,36 @@
+
+var _ = require('lodash');
+
+
+//Chunks
+const array = [1, 2, 3, 4, 5, 6];
+const chunks = _.chunk(array, 2);
+console.log('The chunks:',chunks);
+
+//Filter
+const numbers1 = [1, 2, 3, 4, 5, 6];
+const evenNumbers = _.filter(numbers1, n => n % 2 === 0);
+console.log('The Filter:', evenNumbers);
+
+
+//Map
+const names = ['Alice', 'Bob', 'Charlie'];
+const uppercasedNames = _.map(names, name => name.toUpperCase());
+console.log('The map:', uppercasedNames);
+
+
+//Reduce
+const numbers2 = [1, 2, 3, 4, 5];
+const sum = _.reduce(numbers2, (accumulator, value) => accumulator + value, 0);
+console.log(sum);
+
+
+//Debounce
+function saveToDatabase(value) {
+    console.log(`Saving value: ${value}`);
+    // Code to save the value to the database
+  }
+  
+  const debouncedSave = _.debounce(saveToDatabase, 1000);
+  debouncedSave('Hello');
+  debouncedSave('World');
