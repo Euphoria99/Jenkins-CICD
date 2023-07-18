@@ -26,7 +26,7 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [
                     [name: '**']
                 ], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [
-                    [credentialsId: '', url: 'https://github.com/Euphoria99/LoopBack_CRUD.git']
+                    [credentialsId: '', url: 'https://github.com/Euphoria99/Jenkins-CICD.git']
                 ]])
             }
         }
