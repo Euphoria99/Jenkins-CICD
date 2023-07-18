@@ -50,7 +50,7 @@ pipeline {
         }
 
         // Remove old container
-        stage('Stop old containers') {
+        stage('Stop & Remove Old container') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     script {
@@ -61,7 +61,7 @@ pipeline {
         }
 
         //Run the Image 
-        stage('Run Container') {
+        stage('Run New Container') {
             steps {
                 script {
                     sh "docker run --name ${CONTAINER_NAME} -d -p --restart always ${PORT}:${PORT} ${REPOSITORY_URI}:${IMAGE_TAG}"
@@ -69,7 +69,7 @@ pipeline {
             }
         }
         //Remove dangling images
-        stage('Remove old Images') {
+        stage('Remove Old Images') {
             steps {
                 script {
                     sh "docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi"
